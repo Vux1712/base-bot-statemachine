@@ -3,17 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Blocking Wall
+  - Bot
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PatrolPoint
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Bullet
   - 
   - 
   - 
