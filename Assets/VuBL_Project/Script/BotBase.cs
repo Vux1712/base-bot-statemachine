@@ -6,14 +6,15 @@ using UnityEngine.Serialization;
 public abstract class BotBase : MonoBehaviour
 {
     [Header("Base")]
-    [SerializeField] protected Transform[] patrolPoints;
     [SerializeField] protected int health = 5;
     [SerializeField] protected float visibleDistance = 10f;
     [SerializeField] protected float safeDistancePatrol = 5f;
     [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected float rotationSpeed = 3f;
     [SerializeField] protected BehaviorState behaviorState;
-
+    protected Rigidbody rb;
+    protected CapsuleCollider cl;
+    protected Animator _animator;
     protected abstract void UpdateBotState(BehaviorState newState);
 
     protected abstract void Patrol(); //tuan tra
@@ -29,25 +30,6 @@ public abstract class BotBase : MonoBehaviour
     {
     }
 
-    protected virtual void Update()
-    {
-        //UpdateBotState();
-        switch (behaviorState)
-        {
-            case BehaviorState.Patrol:
-                Patrol();
-                break;
-            case BehaviorState.Chase:
-                Chase();
-                break;
-            case BehaviorState.Attack:
-                Attack();
-                break;
-            case BehaviorState.Flee:
-                Flee();
-                break;
-        }
-    }
 }
 
 public enum BehaviorState
