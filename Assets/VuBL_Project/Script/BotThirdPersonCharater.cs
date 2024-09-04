@@ -144,8 +144,11 @@ public class BotThirdPersonCharater : BotBase
         }
         else
         {
-            _animator.SetFloat("Speed", 0);
-            rb.velocity = Vector3.zero;
+            if (_animator.GetFloat("Speed") > 0)
+            {
+                _animator.SetFloat("Speed", 0);
+                rb.velocity = Vector3.zero;
+            }
         }
     }
 

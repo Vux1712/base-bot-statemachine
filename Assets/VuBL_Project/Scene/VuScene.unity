@@ -178,7 +178,6 @@ Terrain:
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
-  m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -2040,7 +2039,11 @@ PrefabInstance:
     - target: {fileID: 2343289704860212899, guid: e591670dd27f2fa429ff27b70beb72c9, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 3dc5212c8258f2849a74c4455412dbe6, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468096031042567183, guid: e591670dd27f2fa429ff27b70beb72c9, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4468096031042567183, guid: e591670dd27f2fa429ff27b70beb72c9, type: 3}
       propertyPath: safeDistancePatrol
       value: 6
@@ -2061,6 +2064,14 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[3]
       value: 
       objectReference: {fileID: 2045651231}
+    - target: {fileID: 5419686996140399481, guid: e591670dd27f2fa429ff27b70beb72c9, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5419686996140399481, guid: e591670dd27f2fa429ff27b70beb72c9, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2150,9 +2161,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2874564776872192106, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874564776872192106, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5957336904178253250, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
       propertyPath: m_Name
       value: flee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427373523113890115, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
+      propertyPath: moveSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6427373523113890115, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
       propertyPath: layerMask.m_Bits
@@ -2221,7 +2244,7 @@ PrefabInstance:
     - target: {fileID: 8003444474312888551, guid: 2230f9bdb73916141a697ed53b94f454, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 3dc5212c8258f2849a74c4455412dbe6, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
