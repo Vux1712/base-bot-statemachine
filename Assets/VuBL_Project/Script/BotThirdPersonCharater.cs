@@ -174,7 +174,7 @@ public class BotThirdPersonCharater : BotBase
     {
         RotateTowardsDirection(directionInput);
         _animator.SetFloat("Speed", moveSpeed);
-        rb.AddForce(directionInput * moveSpeed, ForceMode.Force);
+        rb.AddForce(directionInput * moveSpeed, ForceMode.Impulse);
         //Debug.LogError(transform.position.normalized);
     }
 
