@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    CharacterController playerController;
+    Rigidbody playerController;
     [SerializeField]private Animator animator;
+    [SerializeField]private FixedJoystick joystick;
     Vector3 playerVelocity;
     public float moveSpeed = 2f;
     public float jumpHeight = 1f;
@@ -14,31 +15,25 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     private void Start()
     {
-        playerController = gameObject.GetComponent<CharacterController>();
+        playerController = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        isGrounded = playerController.isGrounded;
-        if (isGrounded && playerVelocity.y < 0)
+        /*if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
-        }
+        }*/
             
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal"));
-        /*if (/*direction.magnitude#1#Input.GetAxis("Horizontal") >= 0.1f||Input.GetAxis("Horizontal")>=0.1f)
+        playerController.velocity= new Vector3(joystick.Horizontal* moveSpeed, 0, joystick.Vertical* moveSpeed);
+        if (joystick.Horizontal!= 0f||joystick.Vertical!= 0f)
         {            
-            animator.SetBool("walk",true);
-            animator.SetBool("idle",false);
+            animator.SetBool("run",true);
         }
         else
         {
-            animator.SetBool("walk",false);
-            animator.SetBool("idle",true);
-        }*/
-        playerController.Move(direction * Time.deltaTime * moveSpeed);
+            animator.SetBool("run",false);
+        }
         
-        Quaternion playerRotation = Quaternion.LookRotation(direction);
-        transform.rotation =Quaternion.Slerp(transform.rotation,playerRotation,Time.deltaTime * 10f);
     }
 }

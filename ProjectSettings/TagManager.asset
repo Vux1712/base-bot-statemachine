@@ -7,6 +7,7 @@ TagManager:
   - Blocking Wall
   - Bot
   - Bullet
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
@@ -34,12 +35,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - MovingPlatform
+  - VisualEffect
+  - Overlay
+  - SubCharacter
+  - Character
   m_SortingLayers:
   - name: Default
     uniqueID: 0
