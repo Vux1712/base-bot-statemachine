@@ -5,57 +5,57 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     BaseState currenState;
+    public Transform Player;
+    public AttackState attackState;
+    public PatrolSate patrolSate;
+    public ChaseState chaseState;
+    public FleeState fleeState;
+    public AttackAndMoveState attackAndMoveState;
 
-    public AttackState attackState = new AttackState();
-    public PatrolSate patrolSate = new PatrolSate();
-    public ChaseStatte chaseStatte = new ChaseStatte();
-    public FleeState fleeState = new FleeState();
-    public AttackAndMoveState attackAndMoveState = new AttackAndMoveState();
-
+    public WayPoint wayPoint;
 
     public Animator animator;
+
+    public float FleeRange = 1;
+    public float AttackRange = 5;
+
+    public float DetecRange = 10;
     // Start is called before the first frame update
     void Start()
     {
+        attackState = new AttackState(Player,transform,AttackRange,FleeRange);
+        patrolSate = new PatrolSate(Player,transform,wayPoint,DetecRange);
+        chaseState = new ChaseState(Player,transform,AttackRange,DetecRange);
+        fleeState = new FleeState(Player,transform,FleeRange,DetecRange);
+        attackAndMoveState = new AttackAndMoveState();
+
         animator = GetComponent<Animator>();
-        currenState = patrolSate;
+        ChangeState(patrolSate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Horizontal") > 0)
-        {
-            ChangeState(patrolSate);
-        }
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            ChangeState(patrolSate);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ChangeState(chaseStatte);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ChangeState(fleeState);
-        }
-        if (Input.GetKeyDown(KeyCode.K) && Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
-        {
-            ChangeState(attackAndMoveState);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ChangeState(attackState);
-        }
+       currenState.UpdateState();
     }
     public void ChangeState(BaseState state)
     {
         if (currenState != null)
         {
-            currenState.ExitState(this);
+            currenState.ExitState();
         }
         currenState = state;
         currenState.EnterState(this);
+    }
+    public void OnDrawGizmosSelected()
+    {
+        
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, DetecRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, FleeRange);
     }
 }
